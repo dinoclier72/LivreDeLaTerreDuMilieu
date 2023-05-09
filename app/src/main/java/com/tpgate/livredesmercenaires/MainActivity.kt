@@ -1,8 +1,11 @@
 package com.tpgate.livredesmercenaires
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.transition.Transition
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -20,12 +23,17 @@ import com.bumptech.glide.request.target.SimpleTarget
 import com.tpgate.livredesmercenaires.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    companion object{
+        lateinit var context : Context
+        val handler = Handler(Looper.getMainLooper())
+
+    }
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val context = this
+        context = this
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
 
