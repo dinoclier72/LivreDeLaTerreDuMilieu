@@ -1,6 +1,6 @@
 package com.tpgate.livredesmercenaires.model
 
-data class Doc(
+data class CharacterData(
     val _id: String,
     val birth: String,
     val death: String,
