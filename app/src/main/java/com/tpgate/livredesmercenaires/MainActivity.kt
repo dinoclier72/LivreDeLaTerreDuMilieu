@@ -39,17 +39,18 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         binding.fab.setOnClickListener { view ->
+            navController.navigate(R.id.characterFragment)
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAnchorView(R.id.fab)
                 .setAction("Action", null).show()
         }
 
-        var imageUrl = "https://placekitten.com/256/256"
+        /*var imageUrl = "https://placekitten.com/256/256"
         val imageView = findViewById<ImageView>(R.id.imageView)
         Glide.with(context)
             .asBitmap()
             .load(imageUrl)
-            .into(imageView)
+            .into(imageView)*/
 
     }
 

@@ -25,4 +25,9 @@
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/characterFragment"
+        android:name="com.tpgate.livredesmercenaires.CharacterFragment"
+        android:label="fragment_character"
+        tools:layout="@layout/fragment_character" />
 </navigation>

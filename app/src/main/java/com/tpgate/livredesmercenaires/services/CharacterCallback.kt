@@ -2,7 +2,7 @@ package com.tpgate.livredesmercenaires.services
 
 import android.util.Log
 import com.google.gson.Gson
-import com.tpgate.livredesmercenaires.model.LotrCharacters
+import com.tpgate.livredesmercenaires.model.CharacterResponse
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Response
@@ -13,7 +13,7 @@ abstract class CharacterCallback: Callback {
         const val TAG = "CharacterCallBack"
         val gson = Gson()
     }
-    abstract fun fireOnResponseOk(data:LotrCharacters)
+    abstract fun fireOnResponseOk(data:CharacterResponse)
 
     override fun onFailure(call: Call, e: IOException) {
         e.printStackTrace()
@@ -25,7 +25,7 @@ abstract class CharacterCallback: Callback {
         } else {
             val json = response.body!!.string()
             Log.d(TAG,"querry response :$json")
-            val data : LotrCharacters = gson.fromJson(json,LotrCharacters::class.java )
+            val data : CharacterResponse = gson.fromJson(json,CharacterResponse::class.java )
             fireOnResponseOk(data)
         }
     }
