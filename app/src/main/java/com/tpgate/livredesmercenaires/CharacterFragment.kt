@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tpgate.livredesmercenaires.adapters.RecyclerCharacterAdapter
@@ -17,9 +19,11 @@ class CharacterFragment : Fragment() {
         private  const val TAG = "CharacterFragment"
     }
     private lateinit var recyclerView: RecyclerView
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        navController = findNavController()
     }
 
     override fun onCreateView(
@@ -32,7 +36,7 @@ class CharacterFragment : Fragment() {
         theOneAPIService.listAllCharacters(object : CharacterCallback(){
             override fun fireOnResponseOk(data: CharacterResponse) {
                 activity?.runOnUiThread() {
-                    val adapter = RecyclerCharacterAdapter(data.docs)
+                    val adapter = RecyclerCharacterAdapter(data.docs,navController)
                     recyclerView = view.findViewById(R.id.recyclerView)
                     recyclerView.layoutManager = LinearLayoutManager(activity)
                     recyclerView.adapter = adapter

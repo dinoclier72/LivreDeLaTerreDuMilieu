@@ -1,11 +1,16 @@
 package com.tpgate.livredesmercenaires.adapters
 
+import android.app.Activity
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tpgate.livredesmercenaires.MainActivity
+import com.tpgate.livredesmercenaires.R
 import com.tpgate.livredesmercenaires.databinding.CharacterrecyclerviewBinding
 import com.tpgate.livredesmercenaires.model.CharacterData
 import com.tpgate.livredesmercenaires.model.Image
@@ -13,7 +18,7 @@ import com.tpgate.livredesmercenaires.model.MediaWikiImageResponse
 import com.tpgate.livredesmercenaires.services.ImageCallback
 import com.tpgate.livredesmercenaires.services.MediaWikiService
 
-class RecyclerCharacterAdapter (private var characterDatas : List<CharacterData>): RecyclerView.Adapter<RecyclerCharacterAdapter.CharacterViewHolder>()
+class RecyclerCharacterAdapter (private var characterDatas : List<CharacterData>,private val navController: NavController): RecyclerView.Adapter<RecyclerCharacterAdapter.CharacterViewHolder>()
 {
     companion object{
         private const val TAG = "RecyclerCharacterAdapter"
@@ -50,13 +55,13 @@ class RecyclerCharacterAdapter (private var characterDatas : List<CharacterData>
         val pageTitle = characterData.wikiUrl.substringAfterLast("/")
         mediaWikiService.fetchImages(pageTitle,object:ImageCallback(){
             override fun fireOnResponseOk(data: MediaWikiImageResponse) {
+                var imageUrl = ""
                 val pageMap = data.query.pages
                 val keys = pageMap.keys
                 val key = keys.toTypedArray()[0]
                 Log.d(TAG,"clee de la map {$key}")
                 val page = pageMap[key]
                 val images = page?.images
-                var imageUrl = ""
                 if(images != null){
                     Log.d(TAG,"imageExist")
                     val image: Image = images[0]
@@ -77,5 +82,10 @@ class RecyclerCharacterAdapter (private var characterDatas : List<CharacterData>
                 }
             }
         })
+        holder.binding.imageViewCharacter.setOnClickListener {
+            Log.d(TAG,"depart vers le prochain fragment")
+            val bundle = bundleOf("characterName" to characterData.name)
+            navController.navigate(R.id.infoCharacter,bundle)
+        }
     }
 }

@@ -30,4 +30,9 @@
         android:name="com.tpgate.livredesmercenaires.CharacterFragment"
         android:label="fragment_character"
         tools:layout="@layout/fragment_character" />
+    <fragment
+        android:id="@+id/infoCharacter"
+        android:name="com.tpgate.livredesmercenaires.InfoCharacter"
+        android:label="fragment_info_character"
+        tools:layout="@layout/fragment_info_character" />
 </navigation>
