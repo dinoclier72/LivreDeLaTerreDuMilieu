@@ -19,7 +19,7 @@ class MediaWikiService {
 
     fun fetchCharacterWikiText(name: String,callback: Callback){
         val request = Request.Builder()
-            .url("https://lotr.fandom.com/api.php?action=query&prop=revisions&titles=${name}&rvprop=content&format=json")
+            .url("https://lotr.fandom.com/api.php?action=query&prop=revisions&titles=${name}&rvprop=content&format=json&rvslots=*")
             .build()
         client.newCall(request).enqueue(callback)
     }
