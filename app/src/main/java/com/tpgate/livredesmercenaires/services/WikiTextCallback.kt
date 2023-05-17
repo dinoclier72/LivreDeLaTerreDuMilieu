@@ -2,18 +2,19 @@ package com.tpgate.livredesmercenaires.services
 
 import android.util.Log
 import com.google.gson.Gson
+import com.tpgate.livredesmercenaires.model.MediaWikiTextResponse
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Response
 import java.io.IOException
 
-class WikiTextCallback:Callback {
+abstract class WikiTextCallback:Callback {
     companion object{
         const val TAG = "WikiTextCallback"
         val gson = Gson()
     }
 
-    //abstract fun fireOnResponseOk(data: MediaWikiTextResponse)
+    abstract fun fireOnResponseOk(data: MediaWikiTextResponse)
 
     override fun onFailure(call: Call, e: IOException) {
         e.printStackTrace()
@@ -25,8 +26,8 @@ class WikiTextCallback:Callback {
         } else {
             val json = response.body!!.string()
             Log.d(CharacterCallback.TAG,"querry response :$json")
-            //val data : MediaWikiTextResponse = CharacterCallback.gson.fromJson(json, MediaWikiTextResponse::class.java )
-            //fireOnResponseOk(data)
+            val data : MediaWikiTextResponse = CharacterCallback.gson.fromJson(json, MediaWikiTextResponse::class.java )
+            fireOnResponseOk(data)
         }
     }
 }

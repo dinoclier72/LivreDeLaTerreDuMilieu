@@ -5,4 +5,5 @@ data class Page(
     val ns: Int,
     val pageid: Int,
     val title: String,
+    val revisions: List<Revision>
 )
