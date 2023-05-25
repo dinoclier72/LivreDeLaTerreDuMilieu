@@ -59,28 +59,32 @@ class InfoCharacter : Fragment() {
                 val wikiText = page!!.revisions[0].slots.main.content
                 Log.d(TAG,"original wikitext {$wikiText}")
 
-                val input = "== Biography ==\\n\\nAdanel ended up marrying [[Belemir]] of the [[House of Bëor]]; he was a great-grandson of [[Bëor|Bëor the Old]]. Adanel was the mother of five children, and her fifth and last child was a son: [[Beren (Belemir's son)|Beren]].<ref>The [[History of Middle-earth|'History of Middle-earth']], Vol. XI: [[The War of the Jewels|'The War of the Jewels']], Part Two, The Later Quenta Silmarillion (Chapter 14): \\\"Of the Coming of Men into the West\\\", Commentary, (ii)'The House of Hador'.</ref> His daughter, [[Emeldir]] '\\\"the Man-hearted\\\"', named her son after her father; this child was the renowned [[Beren|Beren Erchamion]] (''Beren the One-handed''). Thus, Adanel was the great-grandmother of Beren son of Emeldir, her granddaughter.\\n\\nThe Wise of the people of Marach were the only [[Men]] to preserve the tale of their original sin, when, soon after their awakening, the Men chose to worship [[Melkor]] instead of [[Eru Ilúvatar|Eru]]. Adanel told this tale (called the 'Tale of Adanel' in [[Morgoth's Ring|'Morgoth's Ring']]) to [[Andreth]] of the House of Bëor.\\n\\nAndreth was a very distant niece of Adanel's husband Belemir through the line of [[Baran]], the eldest son of Bëor, and Belemir through the line of his grandfather [[Belen]], who was the youngest son of Bëor. In addition, Andreth's nephew [[Barahir]] married Adanel's granddaughter Emeldir.<ref>The [[History of Middle-earth|'History of Middle-earth']], Vol. XI: [[The War of the Jewels|'The War of the Jewels']], Part Two: The Later Quenta Silmarillion, XIV: \\\"Of the Coming of Men into the West\\\", (i)'The House of Bëor', pg. 231.</ref>\\n\\n== Etymology =="
+                val biography: String = extractBiography(wikiText)
 
-                Log.d(TAG,"made up input {$input}")
-
-                val regex = "==\\s?Biography\\s?==([\\S\\s]*?)=="
-                val pattern = Pattern.compile(regex)
-                val matcher = pattern.matcher(wikiText)
-
-
-                if (matcher.find()) {
-                    val biography = matcher.group(1)
-                    Log.d(TAG,biography)
-                    val textView : TextView = view.findViewById(R.id.textView)
-                    activity?.runOnUiThread(){
-                        textView.text = biography
-                    }
-                } else {
-                    Log.d(TAG,"Biography not found")
+                val textView : TextView = view.findViewById(R.id.textView)
+                activity?.runOnUiThread(){
+                    textView.text = biography
                 }
             }
 
         })
         return view
+    }
+
+    fun extractBiography(rawText : String) : String{
+        var output : String
+
+        val regex = "==\\s?Biography\\s?==([\\S\\s]*?)[^=]==[^=]"
+        val pattern = Pattern.compile(regex)
+        val matcher = pattern.matcher(rawText)
+
+
+        if (matcher.find()) {
+            output = matcher.group(1)
+        } else {
+            output = "No biography for this character"
+        }
+
+        return output
     }
 }
