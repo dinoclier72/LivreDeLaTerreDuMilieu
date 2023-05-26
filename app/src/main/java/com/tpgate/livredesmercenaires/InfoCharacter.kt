@@ -6,18 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.translation.Translator
 import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.mlkit.common.model.DownloadConditions
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.TranslatorOptions
 import com.tpgate.livredesmercenaires.adapters.RecyclerCharacterAdapter
 import com.tpgate.livredesmercenaires.model.CharacterResponse
 import com.tpgate.livredesmercenaires.model.MediaWikiTextResponse
 import com.tpgate.livredesmercenaires.services.*
-import java.io.BufferedWriter
-import java.io.File
-import java.io.FileWriter
 import java.util.regex.Pattern
 
 class InfoCharacter : Fragment() {
@@ -62,8 +64,11 @@ class InfoCharacter : Fragment() {
                 val biography: String = extractBiography(wikiText)
 
                 val textView : TextView = view.findViewById(R.id.textView)
-                activity?.runOnUiThread(){
-                    textView.text = biography
+
+                translateText(biography,"fr"){translateText->
+                    activity?.runOnUiThread(){
+                        textView.text = translateText
+                    }
                 }
             }
 
@@ -87,4 +92,29 @@ class InfoCharacter : Fragment() {
 
         return output
     }
+
+    fun translateText(text: String, targetLanguage: String, callback: (String) -> Unit) {
+        val options = TranslatorOptions.Builder()
+            .setSourceLanguage(TranslateLanguage.ENGLISH)
+            .setTargetLanguage(TranslateLanguage.FRENCH)
+            .build()
+        val translator = Translation.getClient(options)
+        val conditions = DownloadConditions.Builder()
+            .requireWifi()
+            .build()
+        translator.downloadModelIfNeeded(conditions)
+            .addOnSuccessListener {
+                translator.translate(text)
+                    .addOnSuccessListener { translatedText ->
+                        callback(translatedText) // Appeler le callback avec le texte traduit
+                    }
+                    .addOnFailureListener { exception ->
+                        // Gérer les échecs de traduction
+                    }
+            }
+            .addOnFailureListener { exception ->
+                // Gérer les échecs de téléchargement du modèle
+            }
+    }
+
 }

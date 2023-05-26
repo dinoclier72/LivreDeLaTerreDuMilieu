@@ -52,14 +52,6 @@ class MainActivity : AppCompatActivity() {
                 .setAnchorView(R.id.fab)
                 .setAction("Action", null).show()
         }
-
-        /*var imageUrl = "https://placekitten.com/256/256"
-        val imageView = findViewById<ImageView>(R.id.imageView)
-        Glide.with(context)
-            .asBitmap()
-            .load(imageUrl)
-            .into(imageView)*/
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
