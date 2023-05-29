@@ -101,7 +101,7 @@ limitations under the License. -->
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:contentDescription="content_description_media"
-                android:scaleType="centerCrop" />
+                android:scaleType="fitXY" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

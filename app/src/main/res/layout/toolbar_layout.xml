@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:orientation="horizontal"
+    android:padding="1dp">
+
+    <ImageButton
+        android:id="@+id/characterButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@drawable/character_icon"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"/>
+
+    <ImageButton
+        android:id="@+id/mapButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@drawable/map"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"/>
+
+    <ImageButton
+        android:id="@+id/mainMenuButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@drawable/compass"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"/>
+
+    <ImageButton
+        android:id="@+id/guessCharacterButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@drawable/guess_the_character"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"/>
+
+    <ImageButton
+        android:id="@+id/guessQuoteButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@drawable/guess_da_quote"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"/>
+
+</LinearLayout>
