@@ -1,6 +1,7 @@
 package com.tpgate.livredesmercenaires.services
 
 import android.util.Log
+import io.github.cdimascio.dotenv.dotenv
 import okhttp3.Callback
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -8,8 +9,16 @@ import okhttp3.Request
 class TheOneAPIService {
     companion object{
         const val TAG = "TheOneAPIService"
-        const val token = "[REDACTED]"
+        var token = "[REDACTED]"
         val client = OkHttpClient()
+    }
+
+    init {
+        val dotenv = dotenv {
+            directory = "/assets"
+            filename = "env" // instead of '.env', use 'env'
+        }
+        token = dotenv["THE_ONE_API_TOKEN"]
     }
 
     //list tous le personnages

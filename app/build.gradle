@@ -51,4 +51,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     //tanslator
     implementation 'com.google.mlkit:translate:17.0.1'
+    //dotenv
+    implementation 'io.github.cdimascio:dotenv-kotlin:6.4.1'
 }
