@@ -6,7 +6,7 @@
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
 
-   <!-- Button labels-->
+    <!-- Button labels-->
     <string name="main_menu_characters">Characters</string>
     <string name="main_menu_map">Map</string>
     <string name="main_menu_character_guess">Guess a Character</string>
@@ -18,4 +18,16 @@
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Fragment principale -->
+    <string name="main_menu_intro">
+        Bienvenue sur le livre de la terre du milieu, ce livre vous contera les multiples histoires de tous les personnages peuplant cet univers et vous proposera aussi quelques jeux.
+    </string>
+
+    <!--- fragment config -->
+    <string name="save_and_quit">save and quit</string>
+    <string name="config_presentation">chose a language</string>
+
+    <!--- fragment quote -->
+    <string name="quote_intro">Devine la citation</string>
 </resources>

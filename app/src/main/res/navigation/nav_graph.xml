@@ -25,4 +25,14 @@
         android:name="com.tpgate.livredesmercenaires.SecondFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_second" />
+    <fragment
+        android:id="@+id/languageConfig"
+        android:name="com.tpgate.livredesmercenaires.LanguageConfig"
+        android:label="fragment_language_config"
+        tools:layout="@layout/fragment_language_config" />
+    <fragment
+        android:id="@+id/quoteGuesser"
+        android:name="com.tpgate.livredesmercenaires.QuoteGuesser"
+        android:label="fragment_quote_guesser"
+        tools:layout="@layout/fragment_quote_guesser" />
 </navigation>

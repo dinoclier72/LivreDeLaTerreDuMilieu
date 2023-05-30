@@ -35,6 +35,9 @@ class FirstFragment : Fragment() {
         binding.buttonCharacters.setOnClickListener {
             findNavController().navigate(R.id.characterFragment)
         }
+        binding.buttonQuoteGuess.setOnClickListener{
+            findNavController().navigate(R.id.quoteGuesser)
+        }
     }
 
     override fun onDestroyView() {
