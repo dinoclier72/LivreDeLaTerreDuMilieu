@@ -2,7 +2,17 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:orientation="horizontal"
-    android:padding="1dp">
+    android:background="@drawable/linear_layout_border"
+    android:padding="2dp">
+
+    <ImageButton
+        android:id="@+id/languageButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@drawable/gb"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"/>
 
     <ImageButton
         android:id="@+id/characterButton"
@@ -10,15 +20,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:src="@drawable/character_icon"
-        android:scaleType="fitXY"
-        android:background="@android:color/transparent"/>
-
-    <ImageButton
-        android:id="@+id/mapButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:src="@drawable/map"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"/>
 

@@ -39,6 +39,12 @@ limitations under the License. -->
 
                 <!-- Title, secondary and supporting text -->
                 <TextView
+                    android:id="@+id/textView_character_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="name"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+                <TextView
                     android:id="@+id/textView_character_height"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,20 +92,13 @@ limitations under the License. -->
                     android:layout_height="wrap_content"
                     android:text="hair"
                     android:textAppearance="?attr/textAppearanceHeadline6" />
-
-                <TextView
-                    android:id="@+id/textView_character_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="name"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
             </LinearLayout>
 
             <ImageView
                 android:id="@+id/imageView_character"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:contentDescription="content_description_media"
                 android:scaleType="fitXY" />
         </LinearLayout>

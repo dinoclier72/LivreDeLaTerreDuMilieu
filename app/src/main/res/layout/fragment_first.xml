@@ -20,39 +20,41 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
+       <TextView
+           android:id="@+id/textIntro"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="@string/main_menu_intro"
+           app:layout_constraintTop_toBottomOf="@+id/imageView"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           android:textColor="@color/black"
+           android:justificationMode="inter_word"
+           android:padding="6dp"/>
+
         <LinearLayout
             android:id="@+id/group1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/textIntro"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
         <Button
             android:id="@+id/button_characters"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/main_menu_characters" />
-        <Button
-            android:id="@+id/button_map"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/main_menu_map" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/group2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/group1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
         <Button
-            android:id="@+id/button_character_guess"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/main_menu_character_guess" />
-        <Button
             android:id="@+id/button_quote_guess"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/main_menu_quote_guess" />
         </LinearLayout>

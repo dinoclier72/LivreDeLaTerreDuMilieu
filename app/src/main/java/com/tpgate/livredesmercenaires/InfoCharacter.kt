@@ -65,9 +65,15 @@ class InfoCharacter : Fragment() {
 
                 val textView : TextView = view.findViewById(R.id.textView)
 
-                translateText(biography,"fr"){translateText->
-                    activity?.runOnUiThread(){
-                        textView.text = translateText
+                if(MainActivity.config.currentLanguage != TranslateLanguage.ENGLISH) {
+                    translateText(biography, "fr") { translateText ->
+                        activity?.runOnUiThread() {
+                            textView.text = translateText
+                        }
+                    }
+                }else{
+                    activity?.runOnUiThread() {
+                        textView.text = biography
                     }
                 }
             }
